@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="color-scheme" content="dark" />
   <title>Cool 3D Graphics</title>
   <style>
-    body { margin: 0; overflow: hidden; background: black; font-family: sans-serif; }
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #121212;
+      color: #f5f5f5;
+      font-family: sans-serif;
+    }
     #wave {
       width: 100%;
     }
@@ -28,7 +35,7 @@
     // Base
     const base = new THREE.Mesh(
       new THREE.BoxGeometry(4, 0.2, 2),
-      new THREE.MeshStandardMaterial({ color: 0x333333 })
+      new THREE.MeshStandardMaterial({ color: 0x444444 })
     );
     base.position.y = 0;
     scene.add(base);
@@ -36,7 +43,7 @@
     // Rotating drum
     const drum = new THREE.Mesh(
       new THREE.CylinderGeometry(0.5, 0.5, 2, 32),
-      new THREE.MeshStandardMaterial({ color: 0xffffff })
+      new THREE.MeshStandardMaterial({ color: 0xcccccc })
     );
     drum.rotation.x = Math.PI / 2; // lay horizontally
     drum.position.y = 0.6;
@@ -45,7 +52,7 @@
     // Pen arm
     const pen = new THREE.Mesh(
       new THREE.BoxGeometry(0.05, 0.6, 0.05),
-      new THREE.MeshStandardMaterial({ color: 0xff0000 })
+      new THREE.MeshStandardMaterial({ color: 0xff5555 })
     );
     pen.position.set(0.55, 0.9, 0);
     scene.add(pen);
@@ -68,13 +75,13 @@
     function drawWave(value) {
       waveData.push(waveCanvas.height / 2 - value * 100);
       if (waveData.length > waveCanvas.width) waveData.shift();
-      waveCtx.fillStyle = '#000';
+      waveCtx.fillStyle = '#121212';
       waveCtx.fillRect(0, 0, waveCanvas.width, waveCanvas.height);
       waveCtx.beginPath();
       for (let i = 0; i < waveData.length; i++) {
         waveCtx.lineTo(i, waveData[i]);
       }
-      waveCtx.strokeStyle = '#00ff00';
+      waveCtx.strokeStyle = '#33ff33';
       waveCtx.stroke();
     }
 
